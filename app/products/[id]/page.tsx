@@ -6,5 +6,5 @@ interface Props {
 
 export default function ProductPage({ params }: Props) {
   const { id } = params;
-  return <div>Product ID: {id} </div>;
+  return <div className="py-3">Product ID: {id} </div>;
 }

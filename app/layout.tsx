@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 
@@ -15,10 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex min-h-screen flex-col">
         <Navbar />
-        <main className="container mx-auto">{children}</main>
+        <main className="mx-auto max-w-5xl grow">{children}</main>
         <div id="modal"></div>
+        <Footer />
       </body>
     </html>
   );
