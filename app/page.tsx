@@ -1,3 +1,4 @@
+import Heading from "./components/Heading";
 import ProductCard, { Product } from "./components/ProductCard";
 
 const products: Product[] = [
@@ -17,7 +18,7 @@ const products: Product[] = [
     price: 569.99,
   },
   {
-    name: "Corsair RMX Series (2021), RM1000x, 1000 Watt",
+    name: "Corsair RMX Series (2021) RM1000x 1000 Watt",
     id: "4",
     price: 189.95,
   },
@@ -36,13 +37,20 @@ const products: Product[] = [
     id: "7",
     price: 199.99,
   },
+  {
+    name: "Corsair RMX Series (2021) RM1000x 1000 Watt",
+    id: "8",
+    price: 189.95,
+  },
 ];
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="p-3">
       <section>
-        <h3 className="text-3xl font-bold my-5">Products</h3>
+        <Heading size="text-3xl" as="h3">
+          Latest Products
+        </Heading>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (

@@ -1,6 +1,11 @@
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin']
+})
 
 export const metadata = {
   title: "CyberTech",
@@ -16,9 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col">
+      <body className={`flex min-h-screen flex-col ${inter.className}`}>
         <Navbar />
-        <main className="mx-auto max-w-5xl grow">{children}</main>
+        <main className="mx-auto w-full max-w-5xl grow">{children}</main>
         <div id="modal"></div>
         <Footer />
       </body>

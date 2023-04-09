@@ -1,31 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { ShoppingBag } from "tabler-icons-react";
 import Modal from "./Modal";
-import { Components } from 'tabler-icons-react';
+import { Components } from "tabler-icons-react";
+import useCart from "../(store)/store";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const openModal = useCart((state) => state.openModal);
+  const setOpenModal = useCart((state) => state.setOpenModal);
   return (
     <header className="bg-slate-800 text-white">
-      {isOpen && <Modal setIsOpen={setIsOpen} />}
-      <div className="bg-slate-700 py-1.5 text-center">
-        For a limited time{" "}
-        <span className="rounded border border-yellow-300 bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-gray-700 dark:text-yellow-300">
-          10% discount
-        </span>{" "}
-        on your purchase over <strong>$200</strong>
-      </div>
+      {openModal && <Modal />}
       <div className="container mx-auto flex justify-between p-3">
-        <Link className="text-xl flex items-center gap-2" href="/">
-          <Components /> CYBER<strong>TECH</strong>
+        <Link className="flex items-center gap-2 text-xl" href="/">
+          <Components /> CyberTech
         </Link>
         <div
           className="relative flex cursor-pointer items-center"
-          onClick={() => setIsOpen(true)}
+          onClick={setOpenModal}
           tabIndex={0}
         >
           <ShoppingBag strokeWidth={1.5} />
@@ -33,6 +26,13 @@ function Navbar() {
             5
           </span>
         </div>
+      </div>
+      <div className="bg-slate-100 py-1.5 text-center text-sm text-slate-800">
+        ✨ For a limited time{" "}
+        <span className="rounded border border-yellow-300 bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
+          10% discount
+        </span>{" "}
+        on your purchase over <strong>$200</strong>
       </div>
     </header>
   );
