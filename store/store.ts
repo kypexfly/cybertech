@@ -1,5 +1,6 @@
+import { Product } from '@/types'
 import { create } from 'zustand'
-import {type Product} from '../components/ProductCard'
+
 
 interface CartStore {
     cart: Product[],
