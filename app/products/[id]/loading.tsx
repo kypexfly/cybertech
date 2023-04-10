@@ -1,5 +1,9 @@
+import Loader from "@/components/Loader";
+
 export default function Loading() {
   return (
-    <div>loading...</div>
-  )
+    <div className="flex h-screen justify-center py-6">
+      <Loader />
+    </div>
+  );
 }

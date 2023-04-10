@@ -1,6 +1,12 @@
 import { Product } from '@/types'
 import { create } from 'zustand'
 
+interface CartItem {
+    quantity: number
+    price_id: string
+    name: string
+    cost: number
+}
 
 interface CartStore {
     cart: Product[],

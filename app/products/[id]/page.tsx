@@ -1,4 +1,5 @@
 import Heading from "@/components/Heading";
+import Button from "./Button";
 
 import { Metadata } from "next";
 
@@ -9,35 +10,26 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = params;
+  const { id: price_id } = params;
   return {
-    title: `Product ${id} - CyberTech`,
+    title: `Product ${price_id} - CyberTech`,
   };
 }
 
-export default function ProductPage({ params }: Props) {
+export default async function ProductPage({ params }: Props) {
   const { id } = params;
   return (
-    <div className="grid h-screen grid-cols-2 gap-4 py-3">
+    <div className="grid h-screen grid-cols-2 gap-4 px-3 py-6">
       <div className="">
-        <div className="h-96 w-96 rounded bg-slate-300"></div>
+        <div className="h-96 w-96 bg-slate-300"></div>
       </div>
       <section>
         <Heading as="h3" size="text-3xl">
           Product Name
         </Heading>
-        Price: <span>Product Price</span>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod,
-          aliquid eligendi aut assumenda autem laboriosam cum iusto tenetur
-          officia repudiandae dicta temporibus veritatis cumque asperiores quis
-          earum explicabo sequi delectus. Dolor reprehenderit ad alias eos
-          facilis voluptatum eaque, magnam blanditiis dolorum! Tenetur
-          laudantium itaque culpa tempora perspiciatis!
-        </p>
-        <button className="rounded bg-green-600 p-3 font-bold text-white">
-          Add to Cart
-        </button>
+
+        <Button />
+        
       </section>
     </div>
   );

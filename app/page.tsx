@@ -18,13 +18,13 @@ export default async function Home() {
   const products = await getStripeProducts();
 
   return (
-    <main className="p-3">
+    <main className="px-3 py-6">
       <section>
         <Heading size="text-3xl" as="h3">
           Latest Products
         </Heading>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

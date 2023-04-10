@@ -20,7 +20,9 @@ export interface StripeItem {
     unit_amount_decimal: string;
 }
 
-export type Metadata = unknown
+export type Metadata = {
+    category: "gpu" | "storage" | "laptop" | "graphic card" | "ram"
+}
 
 export interface Product {
     id:                   string;

@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`flex min-h-screen flex-col ${inter.className}`}>
         <Navbar />
-        <main className="max-w-screen-xl mx-auto w-full grow">{children}</main>
+        <main className="container mx-auto w-full grow">{children}</main>
         <div id="modal"></div>
         <Footer />
       </body>
