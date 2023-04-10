@@ -3,7 +3,7 @@
 import ReactDom from "react-dom";
 import { X } from "tabler-icons-react";
 import Heading from "./Heading";
-import useCart from "../(store)/store";
+import useCart from "../app/(store)/store";
 
 export default function Modal() {
   const setOpenModal = useCart((state) => state.setOpenModal);

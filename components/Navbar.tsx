@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingBag } from "tabler-icons-react";
+import { Components, ShoppingBag } from "tabler-icons-react";
+import useCart from "../app/(store)/store";
 import Modal from "./Modal";
-import { Components } from "tabler-icons-react";
-import useCart from "../(store)/store";
 
 function Navbar() {
   const openModal = useCart((state) => state.openModal);

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import {type Product} from '../components/ProductCard'
+import {type Product} from '../../components/ProductCard'
 
 interface CartStore {
     cart: Product[],

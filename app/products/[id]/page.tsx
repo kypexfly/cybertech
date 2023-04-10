@@ -1,8 +1,17 @@
-import Heading from "@/app/components/Heading";
+import Heading from "@/components/Heading";
+
+import { Metadata } from "next";
 
 interface Props {
   params: {
     id: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params;
+  return {
+    title: `Product ${id} - CyberTech`,
   };
 }
 

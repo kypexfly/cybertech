@@ -1,5 +1,5 @@
-import Heading from "./components/Heading";
-import ProductCard, { Product } from "./components/ProductCard";
+import Heading from "@/components/Heading";
+import ProductCard, { Product } from "@/components/ProductCard";
 
 const products: Product[] = [
   {
