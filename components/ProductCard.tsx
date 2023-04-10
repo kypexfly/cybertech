@@ -1,27 +1,34 @@
+import { StripeItem } from "@/types";
+import Image from "next/image";
 import Link from "next/link";
+import Heading from "./Heading";
 
-export interface Product {
-  name: string;
-  id: string;
-  price: number;
-}
+export default function ProductCard({ product }: { product: StripeItem }) {
+  const { id, unit_amount: cost, product: productInfo } = product;
+  const { images, name, description } = productInfo;
 
-interface ProductCardProps {
-  product: Product;
-}
-
-export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="flex flex-col bg-white">
-      <Link href={`/products/${product.id}`}><div className="h-44 bg-slate-300 animate-pulse rounded"></div></Link>
-      <div className="flex flex-col py-3">
-        <Link
-          href={`/products/${product.id}`}
-          className="font-bold  text-zinc-900"
-        >
-          {product.name}
-        </Link>
-        <span className="text-green-600 font-semibold text-lg">{`$${product.price}`}</span>
+    <div className="flex flex-col">
+      <Link href={`/products/${id}`}>
+        <div className="group relative h-72 w-full overflow-hidden">
+          <Image
+            src={images[0]}
+            alt={name}
+            height={350}
+            width={350}
+            className="h-full w-full object-contain object-center scale-75 group-hover:scale-[0.85] transition-transform duration-100 ease-in-out"
+          />
+          <div className="top-0 left-0 absolute w-full h-full bg-[#5151510d] z-10"></div>
+        </div>
+      </Link>
+      <div className="flex flex-col p-3">
+        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
+          Accesories
+        </span>
+        <h3 className="hover:text-rose-600 transition-colors text-sm mb-1">
+          <Link href={`/products/${id}`}>{name}</Link>
+        </h3>
+        <span className="text-zinc-700">{`$${cost / 100}`}</span>
       </div>
     </div>
   );
