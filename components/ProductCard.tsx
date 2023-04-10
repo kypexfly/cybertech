@@ -28,7 +28,7 @@ export default function ProductCard({ product }: { product: StripeItem }) {
         <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
           {metadata.category}
         </span>
-        <h3 className="mb-1 text-sm transition-colors hover:text-rose-600">
+        <h3 className="mb-1 md:text-sm transition-colors hover:text-rose-600">
           <Link href={`/products/${id}`}>{name}</Link>
         </h3>
         <span className="text-zinc-700">{price}</span>
