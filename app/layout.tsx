@@ -1,10 +1,12 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import "./globals.css";
+import Toaster from "@/components/Toaster";
 import { Inter } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ['400', '700'],
 });
 
 export const metadata = {
@@ -25,6 +27,7 @@ export default function RootLayout({
         <Navbar />
         <main className="container mx-auto w-full grow">{children}</main>
         <div id="modal"></div>
+        <Toaster />
         <Footer />
       </body>
     </html>

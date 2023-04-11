@@ -1,6 +1,6 @@
 import Heading from "@/components/Heading";
 import ProductCard from "@/components/ProductCard";
-import { StripeProduct } from "@/types";
+import { StripePrice } from "@/types";
 import Stripe from "stripe";
 
 async function getStripeListProducts() {
@@ -8,13 +8,13 @@ async function getStripeListProducts() {
     apiVersion: "2022-11-15",
   });
 
-  const res = await stripe.products.list({
-    expand: ["data.default_price"],
+  const res = await stripe.prices.list({
+    expand: ["data.product"],
   });
 
   const products = res.data;
 
-  return products as StripeProduct[];
+  return products as StripePrice[];
 }
 
 export default async function Home() {

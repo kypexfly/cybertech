@@ -1,11 +1,11 @@
-import dollarUSLocale from "@/helpers/dollarUSLocale";
-import { StripeProduct } from "@/types";
+import dollarUSLocale from "@/utils/dollarUSLocale";
+import { StripePrice } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProductCard({ product }: { product: StripeProduct }) {
-  const { unit_amount: cost } = product.default_price;
-  const { id, images, name, metadata } = product;
+export default function ProductCard({ product }: { product: StripePrice }) {
+  const { unit_amount: cost } = product;
+  const { id, images, name, metadata } = product.product;
 
   const price = dollarUSLocale.format(cost / 100);
 
@@ -13,6 +13,7 @@ export default function ProductCard({ product }: { product: StripeProduct }) {
     <div className="flex flex-col">
       <Link href={`/products/${id}`}>
         <div className="group relative h-72 w-full overflow-hidden">
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
           <Image
             src={images[0]}
             alt={name}
@@ -20,7 +21,6 @@ export default function ProductCard({ product }: { product: StripeProduct }) {
             width={350}
             className="h-full w-full scale-75 object-contain object-center transition-transform duration-100 ease-in-out group-hover:scale-[0.85]"
           />
-          <div className="absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
         </div>
       </Link>
       <div className="flex flex-col p-3">

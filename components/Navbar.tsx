@@ -1,31 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { Components, ShoppingBag } from "tabler-icons-react";
-import useCart from "../store/cart";
-import Modal from "./Modal";
+import { Components } from "tabler-icons-react";
+import CartButton from "./CartButton";
 
 function Navbar() {
-  const cart = useCart((state) => state.cart);
-  const openModal = useCart((state) => state.openModal);
-  const setOpenModal = useCart((state) => state.setOpenModal);
   return (
     <header className="sticky top-0 z-20 bg-white shadow-md">
-      {openModal && <Modal />}
       <div className="container mx-auto flex justify-between px-3 py-6">
         <Link className="flex items-center gap-2 text-base font-bold" href="/">
-          <Components /> <div>cyber.<span className="text-blue-600">tech</span></div>
+          <Components />{" "}
+          <div>
+            cyber.<span className="text-blue-600">tech</span>
+          </div>
         </Link>
-        <div
-          className="relative flex cursor-pointer items-center"
-          onClick={setOpenModal}
-          tabIndex={0}
-        >
-          <ShoppingBag strokeWidth={1.5} />
-          <span className="absolute bottom-3 left-3 flex aspect-square h-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
-            {cart.length}
-          </span>
-        </div>
+        <CartButton />
       </div>
       {/* <div className="bg-slate-100 py-1.5 text-center text-sm text-slate-800">
         ✨ For a limited time{" "}

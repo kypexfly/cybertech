@@ -1,15 +1,41 @@
 "use client";
 
 import useCart from "@/store/cart";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import ReactDom from "react-dom";
 import { X } from "tabler-icons-react";
 import Heading from "./Heading";
-import Link from "next/link";
+import Loader from "./Loader";
 
 export default function Modal() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const cart = useCart((state) => state.cart);
   const removeCartItem = useCart((state) => state.removeCartItem);
   const setOpenModal = useCart((state) => state.setOpenModal);
+
+  async function checkout() {
+    setIsLoading(true);
+    const lineItems = cart.map((cartItem) => {
+      return {
+        price: cartItem.id,
+        quantity: cartItem.quantity,
+      };
+    });
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lineItems }),
+    });
+
+    const data = await res.json();
+    setIsLoading(false);
+    router.push(data.session.url);
+  }
 
   return ReactDom.createPortal(
     <div className="fixed left-0 top-0 z-30 h-screen w-full">
@@ -47,8 +73,12 @@ export default function Modal() {
                   Remove {item.id}
                 </button>
               ))}
-              <button className="cursor-pointer bg-black p-3 text-white">
-                Checkout
+              <button
+                onClick={checkout}
+                className="cursor-pointer bg-black p-3 text-white"
+                disabled={isLoading}
+              >
+                {isLoading ? <Loader /> : "Checkout"}
               </button>
             </div>
           ) : null}
