@@ -1,9 +1,10 @@
 import Heading from "@/components/Heading";
-import Button from "./Button";
-
+import dollarUSLocale from "@/helpers/dollarUSLocale";
+import { StripeProduct } from "@/types";
 import { Metadata } from "next";
-import Stripe from "stripe";
 import Image from "next/image";
+import Stripe from "stripe";
+import Button from "./Button";
 
 interface Props {
   params: {
@@ -23,23 +24,29 @@ async function getStripeSingleProduct(id: string) {
     apiVersion: "2022-11-15",
   });
 
-  const price = await stripe.prices.retrieve(id, { expand: ["product"] });
-  return price;
+  const product = await stripe.products.retrieve(id, {
+    expand: ["default_price"],
+  });
+
+  return product as unknown as StripeProduct;
 }
 
 export default async function ProductPage({ params }: Props) {
   const { id } = params;
 
-  const product = await getStripeSingleProduct(id);
+  const { images, name, metadata, description, default_price } =
+    await getStripeSingleProduct(id);
+
+  const price = dollarUSLocale.format(default_price.unit_amount / 100);
 
   return (
     <>
-      <div className="flex gap-4 px-3 py-6">
-        <div className="w-full max-w-[450px] shrink-0">
+      <div className="flex flex-col gap-4 px-3 py-6 md:flex-row">
+        <div className="w-full flex-1 lg:px-16">
           <div className="relative h-96 w-full overflow-hidden">
             <Image
-              src={product.product.images[0]}
-              alt={product.product.name}
+              src={images[0]}
+              alt={name}
               height={350}
               width={350}
               className="h-full w-full scale-90 object-contain object-center"
@@ -47,16 +54,30 @@ export default async function ProductPage({ params }: Props) {
             <div className="absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
           </div>
         </div>
-        <div className="grow">
-          <p>{product.product.metadata.category}</p>
-          <Heading as="h3" size="text-3xl">
-            {product.product.name}
+        <div className="flex-1">
+          <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
+            {metadata.category}
+          </span>
+          <Heading as="h3" size="text-3xl" className="mb-6">
+            {name}
           </Heading>
-          <p>{product.product.description}</p>
-          <Button />
+
+          <Heading as="h4" className="uppercase tracking-wider">
+            Description
+          </Heading>
+
+          <p>{description}</p>
+
+          <Heading as="h4" className="uppercase tracking-wider">
+            Price
+          </Heading>
+          <span className="text-2xl text-zinc-700">{price}</span>
+
+          <div className="my-3">
+            <Button />
+          </div>
         </div>
       </div>
-      {/* <pre>{JSON.stringify(product, null, 2)}</pre> */}
     </>
   );
 }

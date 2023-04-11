@@ -1,4 +1,4 @@
-export interface StripeItem {
+export interface StripePrice {
     id:                  string;
     object:              string;
     active:              boolean;
@@ -10,7 +10,7 @@ export interface StripeItem {
     lookup_key:          null;
     metadata:            Metadata;
     nickname:            null;
-    product:             Product;
+    product:             StripeProduct;
     recurring:           Recurring;
     tax_behavior:        string;
     tiers_mode:          null;
@@ -24,13 +24,13 @@ export type Metadata = {
     category: "gpu" | "storage" | "laptop" | "graphic card" | "ram"
 }
 
-export interface Product {
+export interface StripeProduct {
     id:                   string;
     object:               string;
     active:               boolean;
-    attributes:           any[];
+    attributes:           string[];
     created:              number;
-    default_price:        string;
+    default_price:        StripePrice;
     description:          string;
     images:               string[];
     livemode:             boolean;

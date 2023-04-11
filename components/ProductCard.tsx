@@ -1,14 +1,13 @@
-import { StripeItem } from "@/types";
+import dollarUSLocale from "@/helpers/dollarUSLocale";
+import { StripeProduct } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-const dollarUSLocale = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+export default function ProductCard({ product }: { product: StripeProduct }) {
+  const { unit_amount: cost } = product.default_price;
+  const { id, images, name, metadata } = product;
 
-export default function ProductCard({ product }: { product: StripeItem }) {
-  const { id, unit_amount: cost, product: productInfo } = product;
-  const { images, name, description, metadata } = productInfo;
-
-  const price = dollarUSLocale.format(cost / 100)
+  const price = dollarUSLocale.format(cost / 100);
 
   return (
     <div className="flex flex-col">
@@ -28,7 +27,7 @@ export default function ProductCard({ product }: { product: StripeItem }) {
         <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
           {metadata.category}
         </span>
-        <h3 className="mb-1 md:text-sm transition-colors hover:text-rose-600">
+        <h3 className="mb-1 transition-colors hover:text-rose-600 md:text-sm">
           <Link href={`/products/${id}`}>{name}</Link>
         </h3>
         <span className="text-zinc-700">{price}</span>
