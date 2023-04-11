@@ -1,7 +1,8 @@
 import { create } from 'zustand'
 
 export interface CartItem {
-    id: string
+    productId: string
+    priceId: string
     quantity: number
 }
 
@@ -18,12 +19,12 @@ const useCart = create<CartStore>((set, get) => ({
     openModal: false,
     setOpenModal: () => set((state) => ({...state, openModal: !state.openModal})),
     addCartItem: (item) => set((state) => {
-        const existItem = state.cart.find(cartItem => cartItem.id === item.id)
+        const existItem = state.cart.find(cartItem => cartItem.productId === item.productId)
         if (existItem) {
             return {
                 ...state,
                 cart: state.cart.map((i) =>
-                  i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+                  i.productId === item.productId ? { ...i, quantity: i.quantity + item.quantity } : i
                 ),
               };
         }
@@ -35,7 +36,7 @@ const useCart = create<CartStore>((set, get) => ({
     }),
     removeCartItem: (id : string) => set(state => ({
         ...state,
-        cart: state.cart.filter(item => item.id !== id)
+        cart: state.cart.filter(item => item.productId !== id)
     })) 
 }))
 

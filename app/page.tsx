@@ -10,6 +10,7 @@ async function getStripeListProducts() {
 
   const res = await stripe.prices.list({
     expand: ["data.product"],
+    limit: 100,
   });
 
   const products = res.data;

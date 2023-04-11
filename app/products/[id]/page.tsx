@@ -68,7 +68,11 @@ export default async function ProductPage({ params }: Props) {
         <span className="text-2xl font-bold">{price}</span>
 
         <div className="my-6">
-          <AddItemButton id={default_price.id} quantity={1} />
+          <AddItemButton
+            priceId={default_price.id}
+            productId={id}
+            quantity={1}
+          />
         </div>
       </div>
     </div>
