@@ -4,7 +4,7 @@ import { StripeProduct } from "@/types";
 import { Metadata } from "next";
 import Image from "next/image";
 import Stripe from "stripe";
-import Button from "./Button";
+import AddItemButton from "./AddItemButton";
 
 interface Props {
   params: {
@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: Props) {
           <span className="text-2xl font-bold">{price}</span>
 
           <div className="my-6">
-            <Button />
+            <AddItemButton id={id} quantity={1}  />
           </div>
         </div>
       </div>

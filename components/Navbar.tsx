@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Components, ShoppingBag } from "tabler-icons-react";
-import useCart from "../store/store";
+import useCart from "../store/cart";
 import Modal from "./Modal";
 
 function Navbar() {
