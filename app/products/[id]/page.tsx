@@ -62,18 +62,11 @@ export default async function ProductPage({ params }: Props) {
             {name}
           </Heading>
 
-          <Heading as="h4" className="uppercase tracking-wider">
-            Description
-          </Heading>
+          <p className="mb-6 text-zinc-700">{description}</p>
 
-          <p>{description}</p>
+          <span className="text-2xl font-bold">{price}</span>
 
-          <Heading as="h4" className="uppercase tracking-wider">
-            Price
-          </Heading>
-          <span className="text-2xl text-zinc-700">{price}</span>
-
-          <div className="my-3">
+          <div className="my-6">
             <Button />
           </div>
         </div>

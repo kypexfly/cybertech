@@ -1,15 +1,12 @@
-import { Product } from '@/types'
 import { create } from 'zustand'
 
 interface CartItem {
     quantity: number
-    price_id: string
-    name: string
-    cost: number
+    product_id: string
 }
 
 interface CartStore {
-    cart: Product[],
+    cart: CartItem[],
     openModal: boolean,
     setOpenModal: () => void
     addCartItem: () => void
