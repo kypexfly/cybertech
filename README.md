@@ -1,6 +1,7 @@
 ## TODO List
 
 * Add landing page
+* Add breadcrums
 * Sliders, pagination, categories
 * ~~Sync global state management with Stripe API (cart/modal component)~~
 * Add transitions when 

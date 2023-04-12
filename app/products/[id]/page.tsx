@@ -40,6 +40,12 @@ export default async function ProductPage({ params }: Props) {
   const { images, name, metadata, description, default_price } =
     await getStripeSingleProduct(id);
 
+  const cartItem = {
+    priceId: default_price.id,
+    productId: id,
+    quantity: 1,
+  };
+
   const price = dollarUSLocale.format(default_price.unit_amount / 100);
 
   return (
@@ -69,15 +75,45 @@ export default async function ProductPage({ params }: Props) {
         <span className="text-2xl font-bold">{price}</span>
 
         <div className="my-6">
-          <AddItemButton
-            productName={name}
-            cartItem={{
-              priceId: default_price.id,
-              productId: id,
-              quantity: 1,
-            }}
-          />
+          <AddItemButton productName={name} cartItem={cartItem} />
         </div>
+
+        <hr className="my-3" />
+
+        <Heading as="h4" className="my-3">
+          Payment methods
+        </Heading>
+
+        <Image
+          height={25}
+          width={232}
+          src="/payment.png"
+          alt="Payment methods"
+        />
+
+        <hr className="my-3" />
+
+        <Heading as="h4" className="my-3">
+          Product Description
+        </Heading>
+
+        <ul className="my-3 list-inside list-disc space-y-3 text-zinc-700">
+          <li>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+            laborum ex obcaecati assumenda explicabo quos omnis.
+          </li>
+          <li>
+            Tempora facere maxime incidunt beatae inventore quae cum
+            exercitationem.
+          </li>
+          <li>Rerum debitis iusto repellendus itaque ea.</li>
+          <li>Sequi voluptatibus saepe.</li>
+          <li>
+            Repellat explicabo labore commodi reprehenderit quas, eum
+            necessitatibus! Pariatur, culpa sunt, rerum odit ad nisi ea
+            excepturi.
+          </li>
+        </ul>
       </div>
     </div>
   );
