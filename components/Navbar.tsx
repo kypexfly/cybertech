@@ -1,15 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { Components } from "tabler-icons-react";
 import CartButton from "./CartButton";
+import Image from "next/image";
 
 function Navbar() {
   return (
     <header className="sticky top-0 z-20 bg-white shadow-md">
       <div className="container mx-auto flex justify-between px-3 py-6">
         <Link className="flex items-center gap-2 text-base font-bold" href="/">
-          <Components />{" "}
+          <Image
+            src="/cybertech.svg"
+            height={28}
+            width={28}
+            alt="CyberTech Logo"
+          />{" "}
           <div>
             cyber.<span className="text-blue-600">tech</span>
           </div>
