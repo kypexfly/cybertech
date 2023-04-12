@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Stripe from "stripe";
 import AddItemButton from "@/components/AddItemButton";
+import Balancer from "react-wrap-balancer";
 
 interface Props {
   params: {
@@ -60,7 +61,7 @@ export default async function ProductPage({ params }: Props) {
           {metadata.category}
         </span>
         <Heading as="h3" size="text-3xl" className="mb-6">
-          {name}
+          <Balancer>{name}</Balancer>
         </Heading>
 
         <p className="mb-6 text-zinc-700">{description}</p>

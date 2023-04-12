@@ -5,15 +5,15 @@ import Link from "next/link";
 import AddItemButton from "./AddItemButton";
 
 export default function ProductCard({ product }: { product: StripePrice }) {
-  const { unit_amount: cost } = product;
-  const { id, images, name, metadata, default_price } = product.product;
+  const { unit_amount: cost, id: priceId } = product;
+  const { images, name, metadata, id: productId } = product.product;
 
   const price = dollarUSLocale.format(cost / 100);
 
   return (
     <div className="flex flex-col">
       <div className="group relative h-72 w-full overflow-hidden">
-        <Link href={`/products/${id}`}>
+        <Link href={`/products/${productId}`}>
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
           <Image
             src={images[0]}
@@ -27,8 +27,8 @@ export default function ProductCard({ product }: { product: StripePrice }) {
           className="relative top-0 w-full transition-all ease-linear group-hover:top-[-45px]"
           productName={name}
           cartItem={{
-            priceId: default_price.id,
-            productId: id,
+            priceId,
+            productId,
             quantity: 1,
           }}
         />
@@ -38,7 +38,7 @@ export default function ProductCard({ product }: { product: StripePrice }) {
           {metadata.category}
         </span>
         <h3 className="mb-1 transition-colors hover:text-rose-600 md:text-sm">
-          <Link href={`/products/${id}`}>{name}</Link>
+          <Link href={`/products/${productId}`}>{name}</Link>
         </h3>
         <span className="text-zinc-700">{price}</span>
       </div>

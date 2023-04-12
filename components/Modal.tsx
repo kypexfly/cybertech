@@ -95,6 +95,14 @@ function WithCartItems() {
     mutate,
   } = useSWR("/api/products", () => getCartItemsFromStripe(productIds));
 
+  const totalPrice =
+    products?.reduce((acc, product) => {
+      const cartItem = cart.find((item) => item.productId === product.id);
+      return (
+        (product.default_price.unit_amount / 100) * cartItem!.quantity + acc
+      );
+    }, 0) ?? 0;
+
   const [isChecking, setIsChecking] = useState(false);
   const router = useRouter();
 
@@ -115,6 +123,8 @@ function WithCartItems() {
       },
       body: JSON.stringify({ lineItems }),
     });
+
+    if (!res.ok) setIsChecking(false);
 
     const data = await res.json();
     setIsChecking(false);
@@ -177,6 +187,10 @@ function WithCartItems() {
       </div>
 
       <div className="mb-6 mt-auto flex flex-col px-3 py-6">
+        <div className="flex justify-between py-6 text-lg">
+          <span className="font-bold">Total</span>
+          <span>{dollarUSLocale.format(totalPrice)}</span>
+        </div>
         <button
           onClick={checkout}
           className="cursor-pointer bg-blue-600 p-3 font-bold text-white"

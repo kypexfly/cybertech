@@ -7,7 +7,7 @@
     * loading list of components
     * ~~opening the modal~~
 * ~~~Cart items counter should include quantity as well~~~
-* Add Github Workflow + Vercel deploy
+* ~~~Add Github Workflow + Vercel deploy~~~
 
 ---
 

@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const redirectURL =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000'
-      : 'https://cybertech-kohl.vercel.app';
+      : 'https://cybertech-blond.vercel.app';
       
   if (body.lineItems.length === 0) {
     return new Response("Error", {
