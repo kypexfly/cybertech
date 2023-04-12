@@ -69,6 +69,7 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="my-6">
           <AddItemButton
+            productName={name}
             cartItem={{
               priceId: default_price.id,
               productId: id,
