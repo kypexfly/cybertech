@@ -1,3 +1,15 @@
+## TODO List
+
+* Add landing page
+* Sliders, pagination, categories
+* Sync global state management with Stripe API (cart/modal component)
+* Add transitions when 
+    * loading list of components
+    * ~~opening the modal~~
+* Cart items counter should include quantity as well
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

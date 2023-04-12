@@ -1,6 +1,10 @@
 import Heading from "@/components/Heading";
 import Redirect from "./Redirect";
 
+export const metadata = {
+  title: 'Successful purchase - CyberTech'
+}
+
 export default async function Sucess() {
   return (
     <main className="flex min-h-[50vh] flex-col items-center justify-center gap-6 px-3 py-10">
