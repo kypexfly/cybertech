@@ -1,11 +1,11 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Toaster from "@/components/Toaster";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ['400', '700'],
 });
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`flex min-h-screen flex-col ${roboto.className}`}>
+      <body className={`flex min-h-screen flex-col ${inter.className}`}>
         <Navbar />
         <main className="container mx-auto w-full grow">{children}</main>
         <div id="modal"></div>
