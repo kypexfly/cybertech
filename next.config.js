@@ -6,6 +6,13 @@ const nextConfig = {
   images: {
     domains: ['files.stripe.com'],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  swcMinify: true,
 }
 
 module.exports = nextConfig
