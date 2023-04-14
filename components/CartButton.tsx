@@ -14,16 +14,16 @@ export default function CartButton() {
 
   return (
     <>
-      <div
+      <button
+        type="button"
         className="relative flex cursor-pointer items-center"
         onClick={setOpenModal}
-        tabIndex={0}
       >
         <ShoppingBag strokeWidth={1.5} />
-        <span className="absolute bottom-3 left-3 flex aspect-square h-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
+        <span className="absolute bottom-3 left-4 flex aspect-square h-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
           {totalItems}
         </span>
-      </div>
+      </button>
       <AnimatePresence>{openModal && <Modal />}</AnimatePresence>
     </>
   );

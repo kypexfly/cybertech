@@ -1,7 +1,7 @@
 "use client";
 
-import { Toaster as ClientComponent } from "react-hot-toast";
+import { Toaster as ClientComponent, ToasterProps } from "react-hot-toast";
 
-export default function Toaster() {
-  return <ClientComponent />;
+export default function Toaster(props: ToasterProps) {
+  return <ClientComponent {...props} />;
 }

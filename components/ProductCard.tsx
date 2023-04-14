@@ -12,15 +12,15 @@ export default function ProductCard({ product }: { product: StripePrice }) {
 
   return (
     <div className="flex flex-col">
-      <div className="group relative h-72 w-full overflow-hidden">
+      <div className="group relative h-56 w-full overflow-hidden md:h-72">
         <Link href={`/products/${productId}`}>
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
           <Image
             src={images[0]}
             alt={name}
-            height={350}
-            width={350}
-            className="h-full w-full scale-75 object-contain object-center transition-transform duration-100 ease-in-out group-hover:scale-[0.85]"
+            height={255}
+            width={255}
+            className="h-full w-full scale-75 object-contain object-center transition-transform duration-100 ease-in group-hover:-translate-y-5 group-hover:scale-[0.8]"
           />
         </Link>
         <AddItemButton

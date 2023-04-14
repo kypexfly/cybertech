@@ -21,12 +21,14 @@ const sections = [
 
 export default function Footer() {
   return (
-    <footer className="pt-10">
-      <div className="container mx-auto grid grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
+    <footer className="pt-10 border-t border-zinc-100">
+      <div className="container mx-auto grid grid-cols-2 gap-8 px-6 py-10 md:grid-cols-4">
         {sections.map((section) => (
           <div key={section.name}>
-            <h2 className="mb-6 text-sm font-semibold uppercase">{section.name}</h2>
-            <ul className="space-y-4">
+            <h2 className="mb-6 text-sm font-semibold uppercase">
+              {section.name}
+            </h2>
+            <ul className="space-y-1 text-zinc-700">
               {section.options.map((option) => (
                 <li key={option}>
                   <a href="#" className=" hover:underline">
@@ -38,7 +40,7 @@ export default function Footer() {
           </div>
         ))}
       </div>
-      <div className="container mx-auto flex justify-between px-6 py-10 border-t border-zinc-100 text-zinc-700 text-sm">
+      <div className="container mx-auto flex justify-between border-t border-zinc-100 px-6 py-10 text-sm text-zinc-700">
         <span>Copyright © 2023 CyberTech</span>
         <a
           href="https://github.com/kypexfly/cybertech"

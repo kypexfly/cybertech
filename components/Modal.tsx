@@ -14,6 +14,7 @@ import useSWR, { useSWRConfig } from "swr";
 import { ShoppingBag, X } from "tabler-icons-react";
 import Heading from "./Heading";
 import Loader from "./Loader";
+import truncateSentence from "@/utils/truncateSentence";
 
 export default function Modal() {
   const cart = useCart((state) => state.cart);
@@ -36,7 +37,7 @@ export default function Modal() {
           opacity: 0,
           transition: {
             ease: "easeIn",
-            duration: 0.15,
+            duration: 0.1,
           },
         }}
         onClick={setOpenModal}
@@ -53,8 +54,8 @@ export default function Modal() {
         transition={{ type: "spring", bounce: 0, duration: 0.4 }}
         className="fixed right-0 top-0 flex h-screen w-full flex-col overflow-y-auto bg-white sm:w-96"
       >
-        <div className="flex items-center justify-between px-3 shadow">
-          <Heading as="h3" size="text-base" className="my-6">
+        <div className="flex items-center justify-between px-3 border-b border-zinc-100">
+          <Heading as="h3" size="text-base" className="my-5">
             Shopping Cart
           </Heading>
           <button onClick={setOpenModal}>
@@ -137,7 +138,7 @@ function WithCartItems() {
       products?.filter((product) => product.id !== productId),
       { revalidate: false }
     );
-    toast.error(`${productName} removed from cart!`);
+    toast.error(`${truncateSentence(productName, 16)} removed`);
   };
 
   return (

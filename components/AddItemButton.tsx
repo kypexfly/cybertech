@@ -3,7 +3,8 @@
 import useCart, { CartItem } from "@/store/cart";
 import { ShoppingCart } from "tabler-icons-react";
 import toast from "react-hot-toast";
-import clsx from "clsx";
+import truncateSentence from "@/utils/truncateSentence";
+import cn from "@/utils/cn";
 
 interface AddItemButtonProps {
   cartItem: CartItem;
@@ -20,14 +21,14 @@ export default function AddItemButton({
 
   const handleAddItem = () => {
     addCartItem(cartItem);
-    toast.success(`${productName} added to cart!`);
+    toast.success(`${truncateSentence(productName, 16)} added to cart`);
   };
 
   return (
     <button
       type="button"
       onClick={handleAddItem}
-      className={clsx(
+      className={cn(
         "mb-2 mr-2 bg-rose-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-rose-700",
         className
       )}

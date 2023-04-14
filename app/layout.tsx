@@ -7,7 +7,7 @@ import { Metadata } from "next";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ['400', '700'],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Wide range of high-quality computers, accessories, electronics, and more to meet your needs",
   keywords: ["tech", "computers", "accessories", "electronics"],
   icons: {
-    icon: './favicon.png',
+    icon: "./favicon.png",
   },
 };
 
@@ -28,10 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`flex min-h-screen flex-col ${inter.className}`}>
+        <div><Toaster position="bottom-left" /></div>
         <Navbar />
         <main className="container mx-auto w-full grow">{children}</main>
         <div id="modal"></div>
-        <Toaster />
         <Footer />
       </body>
     </html>
