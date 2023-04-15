@@ -27,7 +27,6 @@ export default async function getStripeListProducts({
       query: `name~'${search || null}' OR metadata['category']:'${category || null}'`,
     });
     const products = res.data;
-    console.log({category, search})
     return products as StripeProduct[];
   } else {
     const res = await stripe.products.list(options);
