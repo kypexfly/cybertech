@@ -42,14 +42,8 @@ function Navbar() {
           </ul>
         </nav>
 
-        <div className="hidden grow md:flex">
-          <input
-            type="search"
-            className="w-full rounded border border-zinc-100 px-2"
-            placeholder="Search products..."
-            name=""
-            id=""
-          />
+        <div className="hidden grow items-center md:flex">
+          <SearchProductBar />
         </div>
 
         <div className="inline-flex gap-3">
@@ -79,6 +73,9 @@ function Navbar() {
   );
 }
 
+export default Navbar;
+
+// Announcement Component
 function Announcement() {
   return (
     <div className="bg-slate-100 py-1.5 text-center text-sm text-slate-800">
@@ -91,4 +88,30 @@ function Announcement() {
   );
 }
 
-export default Navbar;
+// Search Component
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+
+function SearchProductBar() {
+  const router = useRouter();
+  const { register, getValues } = useForm();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push(`/products?search=${getValues("search")}`, {
+      forceOptimisticNavigation: true,
+    });
+  };
+
+  return (
+    <form onSubmit={(e) => handleSearch(e)} className="w-full">
+      <input
+        type="search"
+        {...register("search")}
+        className="w-full rounded border border-zinc-100 px-2 py-1"
+        placeholder="Search products..."
+        name="search"
+      />
+    </form>
+  );
+}
