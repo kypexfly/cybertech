@@ -1,20 +1,22 @@
 ## TODO List
-
+* Add pagination in products page (search included)
 * Add landing page
 * Add breadcrums
-* ~~Sliders~~, pagination, categories
-* ~~Sync global state management with Stripe API (cart/modal component)~~
 * Add transitions when 
     * loading list of components
-    * ~~opening the modal~~
-* ~~Cart items counter should include quantity as well~~
-* ~~Add Github Workflow + Vercel deploy~~
+    
 
 ## Work In Progress List
-
-* Search bar + results
 * Sort and filter elements
 
+## Completed List
+* Carousel (Latest products)
+* Search by category
+* Search bar + results
+* Sync global state management with Stripe API (cart/modal component)
+* Cart items counter should include quantity as well
+* Add Github Workflow + Vercel deploy
+* Transitions when opening  modal
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

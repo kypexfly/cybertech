@@ -1,10 +1,3 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
-import CartButton from "./CartButton";
-import WishlistButton from "./WishlistButton";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +6,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Image from "next/image";
+import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
+import CartButton from "./CartButton";
+import SearchProductBar from "./SearchProductBar";
+import WishlistButton from "./WishlistButton";
 
 function Navbar() {
   return (
     <header className="sticky top-0 z-20 border-b border-zinc-100 bg-white">
-      <Announcement />
+      {/* <Announcement /> */}
       <div className="container mx-auto flex justify-between gap-3 px-3 py-4">
         <Link className="flex items-center gap-2 text-base font-bold" href="/">
           <Image
@@ -85,33 +84,5 @@ function Announcement() {
       </span>{" "}
       on your purchase over <strong>$200</strong>
     </div>
-  );
-}
-
-// Search Component
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-
-function SearchProductBar() {
-  const router = useRouter();
-  const { register, getValues } = useForm();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push(`/products?search=${getValues("search")}`, {
-      forceOptimisticNavigation: true,
-    });
-  };
-
-  return (
-    <form onSubmit={(e) => handleSearch(e)} className="w-full">
-      <input
-        type="search"
-        {...register("search")}
-        className="w-full rounded border border-zinc-100 px-2 py-1"
-        placeholder="Search products..."
-        name="search"
-      />
-    </form>
   );
 }

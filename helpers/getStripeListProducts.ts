@@ -21,8 +21,6 @@ export default async function getStripeListProducts({
     limit,
   };
 
-  console.log({search})
-
   if (search || category ) {
     const res = await stripe.products.search({
       ...options,
@@ -34,7 +32,6 @@ export default async function getStripeListProducts({
   } else {
     const res = await stripe.products.list(options);
     const products = res.data;
-    console.log('products')
     return products as StripeProduct[];
   }
 }

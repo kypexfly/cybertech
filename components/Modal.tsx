@@ -3,18 +3,18 @@
 import useCart from "@/store/cart";
 import { StripeProduct } from "@/types";
 import dollarUSLocale from "@/utils/dollarUSLocale";
+import truncateSentence from "@/utils/truncateSentence";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactDom from "react-dom";
 import { toast } from "react-hot-toast";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import { ShoppingBag, X } from "tabler-icons-react";
 import Heading from "./Heading";
 import Loader from "./Loader";
-import truncateSentence from "@/utils/truncateSentence";
 
 export default function Modal() {
   const cart = useCart((state) => state.cart);
@@ -155,7 +155,7 @@ function WithCartItems() {
               key={`cart_${product.id}`}
               className="flex items-center gap-3 border-b border-slate-200 px-3 py-6 last:border-b-0"
             >
-              <div className="relative h-20 basis-20 overflow-hidden">
+              <div className="relative h-20 basis-20 overflow-hidden ">
                 <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
                 <Image
                   src={product.images[0]}
@@ -220,7 +220,7 @@ function WithoutCartItems() {
         <button
           type="button"
           onClick={() => {
-            router.push("/");
+            router.push("/products");
             setOpenModal();
           }}
           className="cursor-pointer bg-black p-3 text-white"

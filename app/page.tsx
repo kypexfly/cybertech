@@ -1,8 +1,9 @@
 import Heading from "@/components/Heading";
 import ProductCard from "@/components/ProductCard";
+import SearchProductBar from "@/components/SearchProductBar";
 import Carousel from "@/components/external/Carousel";
 import getStripeListProducts from "@/helpers/getStripeListProducts";
-import "react-multi-carousel/lib/styles.css";
+import Link from "next/link";
 
 import {
   Cpu,
@@ -57,7 +58,7 @@ const categories = [
     icon: DeviceLaptop,
   },
   {
-    name: "CPU",
+    name: "Processor",
     icon: Cpu,
   },
 ];
@@ -67,6 +68,9 @@ export default async function Home() {
 
   return (
     <main className="px-3 py-6">
+      <div className="mb-6 md:hidden">
+        <SearchProductBar />
+      </div>
       <section>
         <header className="my-6 p-5 text-center md:p-10">
           <Heading size="text-4xl" className="md:text-5xl" as="h3">
@@ -76,13 +80,12 @@ export default async function Home() {
         <Carousel
           additionalTransfrom={0}
           arrows
+          ssr={true}
           autoPlay
           autoPlaySpeed={5000}
           centerMode={false}
-          ssr
           className="sliderContainer"
           containerClass="container-with-dots"
-          dotListClass="!relative"
           focusOnSelect={false}
           infinite
           itemClass="px-3"
@@ -93,9 +96,6 @@ export default async function Home() {
           responsive={responsive}
           showDots
           sliderClass=""
-          // slidesToSlide={1}
-          // swipeable
-          // draggable
         >
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -111,14 +111,14 @@ export default async function Home() {
         </header>
         <div className="grid grid-cols-1 md:grid-cols-5">
           {categories.map((category) => (
-            <button
-              // href={`/products/${category}`}
+            <Link
+              href={`/products?category=${category.name.toLowerCase()}`}
               key={category.name}
-              className="flex items-center md:justify-center gap-2 bg-zinc-100 px-6 py-3 hover:bg-blue-600 hover:text-white md:flex-col md:py-6"
+              className="flex items-center gap-2 bg-zinc-100 px-6 py-3 hover:bg-blue-600 hover:text-white md:flex-col md:justify-center md:py-6"
             >
               <category.icon size={32} />
               <span>{category.name}</span>
-            </button>
+            </Link>
           ))}
         </div>
       </section>
