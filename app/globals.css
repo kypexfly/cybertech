@@ -7,6 +7,7 @@
 .react-multiple-carousel__arrow {
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  z-index: 1;
 }
 
 .react-multiple-carousel__arrow:hover {
