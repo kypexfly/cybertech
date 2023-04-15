@@ -2,13 +2,18 @@
 
 * Add landing page
 * Add breadcrums
-* Sliders, pagination, categories
+* ~~Sliders~~, pagination, categories
 * ~~Sync global state management with Stripe API (cart/modal component)~~
 * Add transitions when 
     * loading list of components
     * ~~opening the modal~~
 * ~~Cart items counter should include quantity as well~~
 * ~~Add Github Workflow + Vercel deploy~~
+
+## Work In Progress List
+
+* Search bar + results
+* Sort and filter elements
 
 ---
 
