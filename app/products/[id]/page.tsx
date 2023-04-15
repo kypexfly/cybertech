@@ -81,19 +81,6 @@ export default async function ProductPage({ params }: Props) {
         <hr className="my-3" />
 
         <Heading as="h4" className="my-3">
-          Payment methods
-        </Heading>
-
-        <Image
-          height={25}
-          width={232}
-          src="/payment.png"
-          alt="Payment methods"
-        />
-
-        <hr className="my-3" />
-
-        <Heading as="h4" className="my-3">
           Product Description
         </Heading>
 
