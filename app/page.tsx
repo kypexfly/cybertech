@@ -1,6 +1,5 @@
 import Heading from "@/components/Heading";
 import ProductCard from "@/components/ProductCard";
-
 import Carousel from "@/components/external/Carousel";
 import getStripeListProducts from "@/helpers/getStripeListProducts";
 import "react-multi-carousel/lib/styles.css";
@@ -83,14 +82,14 @@ export default async function Home() {
           ssr
           className="sliderContainer"
           containerClass="container-with-dots"
-          dotListClass="relative"
+          dotListClass="!relative"
           focusOnSelect={false}
           infinite
           itemClass="px-3"
           keyBoardControl
           minimumTouchDrag={80}
-          renderButtonGroupOutside={false}
-          renderDotsOutside={true}
+          renderButtonGroupOutside={true}
+          renderDotsOutside
           responsive={responsive}
           showDots
           sliderClass=""

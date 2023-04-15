@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import cn from "@/utils/cn";
 
 interface HeadingProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -23,7 +23,7 @@ function Heading({
   className,
 }: HeadingProps) {
   return (
-    <Element className={clsx("my-3 font-bold", size, className)}>
+    <Element className={cn("my-3 font-bold", size, className)}>
       {children}
     </Element>
   );
