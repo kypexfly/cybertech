@@ -1,12 +1,12 @@
 import dollarUSLocale from "@/utils/dollarUSLocale";
-import { StripePrice } from "@/types";
+import { StripeProduct } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import AddItemButton from "./AddItemButton";
 
-export default function ProductCard({ product }: { product: StripePrice }) {
-  const { unit_amount: cost, id: priceId } = product;
-  const { images, name, metadata, id: productId } = product.product;
+export default function ProductCard({ product }: { product: StripeProduct }) {
+  const { images, name, metadata, id: productId } = product;
+  const { unit_amount: cost, id: priceId } = product.default_price;
 
   const price = dollarUSLocale.format(cost / 100);
 
@@ -34,13 +34,13 @@ export default function ProductCard({ product }: { product: StripePrice }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-3 md:flex-auto">
-        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
+        <Link href={`/products?category=${metadata.category}`} className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600 hover:underline">
           {metadata.category}
-        </span>
+        </Link>
         <h3 className="mb-1 transition-colors hover:text-rose-600 md:text-sm">
           <Link href={`/products/${productId}`}>{name}</Link>
         </h3>
-        <span className="text-zinc-700">{price}</span>
+        <span className="text-zinc-700 text-lg">{price}</span>
       </div>
     </div>
   );
