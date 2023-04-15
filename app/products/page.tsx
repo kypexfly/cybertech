@@ -1,7 +1,7 @@
 import Heading from "@/components/Heading";
-import ProductCard from "@/components/ProductCard";
 import getStripeListProducts from "@/helpers/getStripeListProducts";
 import { Metadata } from "next";
+import ProductsContainer from "./ProductsContainer";
 
 export const metadata: Metadata = {
   title: "Products - CyberTech",
@@ -12,16 +12,28 @@ export default async function Home() {
 
   return (
     <main className="px-3 py-6">
-      <section>
-        <Heading size="text-3xl" as="h3">
-          All products
-        </Heading>
+      <div className="text-right">
+        <label
+          htmlFor="SortBy"
+          className="block text-xs font-medium text-gray-700"
+        >
+          Sort By
+        </label>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <select
+          id="SortBy"
+          className="mt-1 rounded border-gray-300 p-1 text-sm"
+        >
+          <option>Sort By</option>
+          <option value="Title, DESC">Title, DESC</option>
+          <option value="Title, ASC">Title, ASC</option>
+          <option value="Price, DESC">Price, DESC</option>
+          <option value="Price, ASC">Price, ASC</option>
+        </select>
+      </div>
+
+      <section>
+        <ProductsContainer products={products} />
       </section>
     </main>
   );
