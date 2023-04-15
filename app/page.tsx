@@ -24,7 +24,7 @@ const responsive = {
   },
   mobile: {
     breakpoint: {
-      max: 480,
+      max: 768,
       min: 0,
     },
     items: 1,
@@ -33,7 +33,7 @@ const responsive = {
   tablet: {
     breakpoint: {
       max: 1280,
-      min: 480,
+      min: 768,
     },
     items: 3,
     slidesToSlide: 3,
@@ -80,7 +80,7 @@ export default async function Home() {
           autoPlay
           autoPlaySpeed={5000}
           centerMode={false}
-          ssr={true}
+          ssr
           className="sliderContainer"
           containerClass="container-with-dots"
           dotListClass="relative"
@@ -92,10 +92,11 @@ export default async function Home() {
           renderButtonGroupOutside={false}
           renderDotsOutside={true}
           responsive={responsive}
-          showDots={true}
+          showDots
           sliderClass=""
           // slidesToSlide={1}
-          swipeable
+          // swipeable
+          // draggable
         >
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -109,7 +110,7 @@ export default async function Home() {
             Popular Categories
           </Heading>
         </header>
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5">
+        <div className="grid grid-cols-1 md:grid-cols-5">
           {categories.map((category) => (
             <button
               // href={`/products/${category}`}

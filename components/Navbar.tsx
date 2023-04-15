@@ -17,6 +17,7 @@ import {
 function Navbar() {
   return (
     <header className="sticky top-0 z-20 border-b border-zinc-100 bg-white">
+      <Announcement />
       <div className="container mx-auto flex justify-between gap-3 px-3 py-4">
         <Link className="flex items-center gap-2 text-base font-bold" href="/">
           <Image
@@ -30,7 +31,7 @@ function Navbar() {
           </div>
         </Link>
 
-        <nav className="flex">
+        <nav className="mx-6 hidden text-sm md:flex">
           <ul className="inline-flex items-center gap-2">
             <li>
               <Link href="/">Home</Link>
@@ -41,8 +42,14 @@ function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex grow">
-          <input type="search" className="border border-zinc-100 rounded-sm px-2" placeholder="Search products..." name="" id="" />
+        <div className="hidden grow md:flex">
+          <input
+            type="search"
+            className="w-full rounded border border-zinc-100 px-2"
+            placeholder="Search products..."
+            name=""
+            id=""
+          />
         </div>
 
         <div className="inline-flex gap-3">
@@ -68,14 +75,19 @@ function Navbar() {
           <CartButton />
         </div>
       </div>
-      {/* <div className="bg-slate-100 py-1.5 text-center text-sm text-slate-800">
-        ✨ For a limited time{" "}
-        <span className="rounded border border-yellow-300 bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
-          10% discount
-        </span>{" "}
-        on your purchase over <strong>$200</strong>
-      </div> */}
     </header>
+  );
+}
+
+function Announcement() {
+  return (
+    <div className="bg-slate-100 py-1.5 text-center text-sm text-slate-800">
+      ✨ For a limited time{" "}
+      <span className="rounded border border-yellow-300 bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
+        10% discount
+      </span>{" "}
+      on your purchase over <strong>$200</strong>
+    </div>
   );
 }
 

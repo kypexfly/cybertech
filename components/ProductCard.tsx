@@ -11,8 +11,8 @@ export default function ProductCard({ product }: { product: StripePrice }) {
   const price = dollarUSLocale.format(cost / 100);
 
   return (
-    <div className="flex flex-col">
-      <div className="group relative h-56 w-full overflow-hidden md:h-72">
+    <div className="flex md:flex-col">
+      <div className="group relative h-44 w-full basis-44 overflow-hidden md:h-72 md:basis-auto">
         <Link href={`/products/${productId}`}>
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
           <Image
@@ -33,7 +33,7 @@ export default function ProductCard({ product }: { product: StripePrice }) {
           }}
         />
       </div>
-      <div className="flex flex-col p-3">
+      <div className="flex flex-1 flex-col p-3 md:flex-auto">
         <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
           {metadata.category}
         </span>
