@@ -17,7 +17,7 @@ import {
 function Navbar() {
   return (
     <header className="sticky top-0 z-20 border-b border-zinc-100 bg-white">
-      <div className="container mx-auto flex justify-between px-3 py-4">
+      <div className="container mx-auto flex justify-between gap-3 px-3 py-4">
         <Link className="flex items-center gap-2 text-base font-bold" href="/">
           <Image
             src="/cybertech.svg"
@@ -29,6 +29,22 @@ function Navbar() {
             cyber.<span className="text-blue-600">tech</span>
           </div>
         </Link>
+
+        <nav className="flex">
+          <ul className="inline-flex items-center gap-2">
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/products">Products</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div className="flex grow">
+          <input type="search" className="border border-zinc-100 rounded-sm px-2" placeholder="Search products..." name="" id="" />
+        </div>
+
         <div className="inline-flex gap-3">
           <DropdownMenu>
             <DropdownMenuTrigger>
@@ -38,7 +54,9 @@ function Navbar() {
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel className="text-zinc-900 dark:text-zinc-700">My account</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-zinc-900 dark:text-zinc-700">
+                My account
+              </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-300" />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>

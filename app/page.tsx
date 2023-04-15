@@ -1,8 +1,10 @@
 import Heading from "@/components/Heading";
 import ProductCard from "@/components/ProductCard";
-import { StripePrice } from "@/types";
-import Link from "next/link";
-import Stripe from "stripe";
+
+import Carousel from "@/components/external/Carousel";
+import getStripeListProducts from "@/helpers/getStripeListProducts";
+import "react-multi-carousel/lib/styles.css";
+
 import {
   Cpu,
   Database,
@@ -11,20 +13,32 @@ import {
   DeviceLaptop,
 } from "tabler-icons-react";
 
-async function getStripeListProducts() {
-  const stripe = new Stripe(process.env.STRIPE_SECRET ?? "", {
-    apiVersion: "2022-11-15",
-  });
-
-  const res = await stripe.prices.list({
-    expand: ["data.product"],
-    limit: 6,
-  });
-
-  const products = res.data;
-
-  return products as StripePrice[];
-}
+const responsive = {
+  desktop: {
+    breakpoint: {
+      max: 3000,
+      min: 1280,
+    },
+    items: 5,
+    slidesToSlide: 5,
+  },
+  mobile: {
+    breakpoint: {
+      max: 480,
+      min: 0,
+    },
+    items: 1,
+    slidesToSlide: 1,
+  },
+  tablet: {
+    breakpoint: {
+      max: 1280,
+      min: 480,
+    },
+    items: 3,
+    slidesToSlide: 3,
+  },
+};
 
 const categories = [
   {
@@ -50,12 +64,47 @@ const categories = [
 ];
 
 export default async function Home() {
-  const products = await getStripeListProducts();
+  const products = await getStripeListProducts({ limit: 9 });
 
   return (
     <main className="px-3 py-6">
       <section>
-        <header className="my-6">
+        <header className="my-6 p-5 text-center md:p-10">
+          <Heading size="text-4xl" className="md:text-5xl" as="h3">
+            Latest Products
+          </Heading>
+        </header>
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlay
+          autoPlaySpeed={5000}
+          centerMode={false}
+          ssr={true}
+          className="sliderContainer"
+          containerClass="container-with-dots"
+          dotListClass="relative"
+          focusOnSelect={false}
+          infinite
+          itemClass="px-3"
+          keyBoardControl
+          minimumTouchDrag={80}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={true}
+          responsive={responsive}
+          showDots={true}
+          sliderClass=""
+          // slidesToSlide={1}
+          swipeable
+        >
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </Carousel>
+      </section>
+
+      <section>
+        <header className="mb-6 mt-10">
           <Heading size="text-xl" className="md:text-3xl" as="h3">
             Popular Categories
           </Heading>
@@ -65,24 +114,11 @@ export default async function Home() {
             <button
               // href={`/products/${category}`}
               key={category.name}
-              className="flex items-center justify-center gap-2 bg-zinc-100 px-6 py-3 hover:bg-blue-600 hover:text-white md:flex-col md:py-6"
+              className="flex items-center md:justify-center gap-2 bg-zinc-100 px-6 py-3 hover:bg-blue-600 hover:text-white md:flex-col md:py-6"
             >
               <category.icon size={32} />
               <span>{category.name}</span>
             </button>
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <header className="my-6 p-5 text-center md:p-10">
-          <Heading size="text-4xl" className="md:text-5xl" as="h3">
-            Latest Products
-          </Heading>
-        </header>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-6">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
