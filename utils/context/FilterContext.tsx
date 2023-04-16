@@ -4,6 +4,7 @@ import { useMemo, createContext, useState } from "react";
 
 type SelectorStates = {
   sortby: string;
+  category: string;
   priceRange: {
     min: number;
     max: number;
@@ -18,6 +19,7 @@ interface FilterContextType {
 
 const initialState = {
   sortby: "",
+  category: "",
   priceRange: {
     min: 0,
     max: 0,
@@ -41,7 +43,7 @@ export function FilterContextProvider({
     () => ({
       filter,
       setFilter,
-      resetFilter
+      resetFilter,
     }),
     [filter]
   );
