@@ -53,14 +53,14 @@ function Navbar() {
                 <AvatarFallback>J</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className="w-56">
               <DropdownMenuLabel className="text-zinc-900 dark:text-zinc-700">
                 My account
               </DropdownMenuLabel>
-              <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-300" />
+              <DropdownMenuSeparator className="bg-zinc-100" />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-300" />
+              <DropdownMenuSeparator className="bg-zinc-100" />
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

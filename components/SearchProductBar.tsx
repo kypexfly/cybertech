@@ -20,7 +20,7 @@ export default function SearchProductBar() {
       <input
         type="search"
         {...register("search")}
-        className="w-full rounded border border-zinc-100 px-2 py-1"
+        className="w-full rounded border border-zinc-100 p-2"
         placeholder="Search products..."
         name="search"
       />

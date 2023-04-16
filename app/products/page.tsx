@@ -1,7 +1,10 @@
-import getStripeListProducts from "@/helpers/getStripeListProducts";
-import { Metadata } from "next";
-import ProductsContainer from "./ProductsContainer";
+import Heading from "@/components/Heading";
 import SearchProductBar from "@/components/SearchProductBar";
+import getStripeListProducts from "@/helpers/getStripeListProducts";
+import { FilterContextProvider } from "@/utils/context/FilterContext";
+import { Metadata } from "next";
+import OptionSelector from "./OptionSelector";
+import ProductsContainer from "./ProductsContainer";
 
 export const metadata: Metadata = {
   title: "Products - CyberTech",
@@ -18,36 +21,31 @@ export default async function Home({ searchParams }: Props) {
   const search = searchParams.search;
   const category = searchParams.category;
 
-  const products = await getStripeListProducts({ limit: 10, search, category });
+  const products = await getStripeListProducts({
+    limit: 100,
+    search,
+    category,
+  });
 
   return (
-    <main className="px-3 py-6">
-      <div className="md:hidden mb-6">
-        <SearchProductBar />
-      </div>
-      <div className="text-right">
-        <label
-          htmlFor="SortBy"
-          className="block text-xs font-medium text-gray-700"
-        >
-          Sort By
-        </label>
+    <FilterContextProvider>
+      <div className="flex flex-col gap-3 px-3 py-8 md:flex-row">
+        <aside className="w-full shrink-0 md:w-60">
+          <Heading className="mb-6 font-normal" as="h3">
+            Options
+          </Heading>
+          <div className="mb-6 md:hidden">
+            <SearchProductBar />
+          </div>
+          <div>
+            <OptionSelector />
+          </div>
+        </aside>
 
-        <select
-          id="SortBy"
-          className="mt-1 rounded border-gray-300 p-1 text-sm"
-        >
-          <option>Sort By</option>
-          <option value="Title, DESC">Title, DESC</option>
-          <option value="Title, ASC">Title, ASC</option>
-          <option value="Price, DESC">Price, DESC</option>
-          <option value="Price, ASC">Price, ASC</option>
-        </select>
+        <section className="grow">
+          <ProductsContainer products={products} />
+        </section>
       </div>
-
-      <section>
-        <ProductsContainer products={products} />
-      </section>
-    </main>
+    </FilterContextProvider>
   );
 }

@@ -3,6 +3,7 @@
 import Heading from "@/components/Heading";
 import ProductCard from "@/components/ProductCard";
 import { StripeProduct } from "@/types";
+import useFilteredProducts from "@/utils/hooks/useFilteredProducts";
 import { useSearchParams } from "next/navigation";
 
 export default function ProductsContainer({
@@ -12,30 +13,19 @@ export default function ProductsContainer({
 }) {
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
-  //   Sort by Title
-  const sortedProducts = products.sort((a, b) => {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
-    return 0;
-  });
 
-  //    Sort by Price
-  //   products.sort((a, b) => a.unit_amount - b.unit_amount)
+  const { filteredProducts } = useFilteredProducts(products);
 
   return (
     <>
-      <Heading className="my-6 text-3xl font-normal" as="h3">
+      <Heading className="my-3 font-normal" as="h3">
         {!search ? "All products" : `Search for "${search}"`} (
-        {products.length} results)
+        {filteredProducts.length} results)
       </Heading>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-        {sortedProducts &&
-          sortedProducts.map((product) => (
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {filteredProducts &&
+          filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
       </div>

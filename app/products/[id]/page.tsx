@@ -6,6 +6,7 @@ import Image from "next/image";
 import Stripe from "stripe";
 import AddItemButton from "@/components/AddItemButton";
 import Balancer from "react-wrap-balancer";
+import Link from "next/link";
 
 interface Props {
   params: {
@@ -63,9 +64,12 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
       <div className="flex-1">
-        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
+        <Link
+          href={`/products?category=${metadata.category}`}
+          className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600 hover:underline"
+        >
           {metadata.category}
-        </span>
+        </Link>
         <Heading as="h3" size="text-3xl" className="mb-6">
           <Balancer>{name}</Balancer>
         </Heading>
