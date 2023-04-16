@@ -1,15 +1,12 @@
-## Work In Progress List
-* Add pagination in products page (search included)
-* Sort and filter elements
-
 ## TODO List
 * Add landing page
+* Add pagination in products page
 * Add breadcrums
-* Add transitions/skeletons when 
-    * loading list of components and pagination
 * When adding to cart, open dialog asking the quantity
     
-## Completed List
+## Completed Tasks
+* Add skeletons
+* Sort and filter elements
 * Carousel (Latest products)
 * Search by category
 * Search bar + results
