@@ -12,7 +12,10 @@ export default function Redirect({ seconds = 5 }: { seconds?: number }) {
       setCount((prevCount) => prevCount - 1);
     }, 1000);
 
-    if (count === 0) router.push("/");
+    if (count === 0) {
+      clearInterval(interval)
+      router.push("/")
+    };
 
     return () => {
       clearInterval(interval);

@@ -4,7 +4,9 @@ import { StripeProduct } from "@/types";
 import { Metadata } from "next";
 import Image from "next/image";
 import Stripe from "stripe";
-import AddItemButton from "./AddItemButton";
+import AddItemButton from "@/components/AddItemButton";
+import Balancer from "react-wrap-balancer";
+import Link from "next/link";
 
 interface Props {
   params: {
@@ -39,6 +41,12 @@ export default async function ProductPage({ params }: Props) {
   const { images, name, metadata, description, default_price } =
     await getStripeSingleProduct(id);
 
+  const cartItem = {
+    priceId: default_price.id,
+    productId: id,
+    quantity: 1,
+  };
+
   const price = dollarUSLocale.format(default_price.unit_amount / 100);
 
   return (
@@ -56,11 +64,14 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
       <div className="flex-1">
-        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600">
+        <Link
+          href={`/products?category=${metadata.category}`}
+          className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600 hover:underline"
+        >
           {metadata.category}
-        </span>
+        </Link>
         <Heading as="h3" size="text-3xl" className="mb-6">
-          {name}
+          <Balancer>{name}</Balancer>
         </Heading>
 
         <p className="mb-6 text-zinc-700">{description}</p>
@@ -68,12 +79,32 @@ export default async function ProductPage({ params }: Props) {
         <span className="text-2xl font-bold">{price}</span>
 
         <div className="my-6">
-          <AddItemButton
-            priceId={default_price.id}
-            productId={id}
-            quantity={1}
-          />
+          <AddItemButton productName={name} cartItem={cartItem} />
         </div>
+
+        <hr className="my-3" />
+
+        <Heading as="h4" className="my-3">
+          Product Description
+        </Heading>
+
+        <ul className="my-3 list-inside list-disc space-y-3 text-zinc-700">
+          <li>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+            laborum ex obcaecati assumenda explicabo quos omnis.
+          </li>
+          <li>
+            Tempora facere maxime incidunt beatae inventore quae cum
+            exercitationem.
+          </li>
+          <li>Rerum debitis iusto repellendus itaque ea.</li>
+          <li>Sequi voluptatibus saepe.</li>
+          <li>
+            Repellat explicabo labore commodi reprehenderit quas, eum
+            necessitatibus! Pariatur, culpa sunt, rerum odit ad nisi ea
+            excepturi.
+          </li>
+        </ul>
       </div>
     </div>
   );
