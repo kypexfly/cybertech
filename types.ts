@@ -9,7 +9,7 @@ export interface StripePrice {
     livemode:            boolean;
     lookup_key:          null;
     metadata:            Metadata;
-    nickname:            null;
+    nickname:            string | null;
     product:             StripeProduct;
     recurring:           Recurring;
     tax_behavior:        string;
