@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { Input } from "./ui/input";
 
 export default function SearchProductBar() {
   const router = useRouter();
@@ -9,15 +10,13 @@ export default function SearchProductBar() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/products?search=${getValues("search")}`, {
-      forceOptimisticNavigation: true,
-    });
+    router.push(`/products?search=${getValues("search")}`);
     reset();
   };
 
   return (
     <form onSubmit={(e) => handleSearch(e)} className="w-full">
-      <input
+      <Input
         type="search"
         {...register("search")}
         className="w-full rounded border border-zinc-100 p-2"

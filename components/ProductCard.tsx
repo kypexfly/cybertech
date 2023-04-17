@@ -11,10 +11,10 @@ export default function ProductCard({ product }: { product: StripeProduct }) {
   const price = dollarUSLocale.format(cost / 100);
 
   return (
-    <div className="flex md:flex-col">
-      <div className="group relative h-44 w-full basis-44 overflow-hidden md:h-72 md:basis-auto">
+    <div className="flex md:rounded-b shadow-none transition-shadow duration-200 hover:shadow-xl md:flex-col">
+      <div className="group relative aspect-square h-44 w-full basis-44 overflow-hidden md:h-72 md:basis-auto">
         <Link href={`/products/${productId}`}>
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#6185cc0d]"></div>
           <Image
             src={images[0]}
             alt={name}
@@ -34,13 +34,16 @@ export default function ProductCard({ product }: { product: StripeProduct }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-3 md:flex-auto">
-        <Link href={`/products?category=${metadata.category}`} className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600 hover:underline">
+        <Link
+          href={`/products?category=${metadata.category}`}
+          className="text-[0.75rem] font-bold uppercase tracking-wider text-blue-600 hover:underline"
+        >
           {metadata.category}
         </Link>
         <h3 className="mb-1 transition-colors hover:text-rose-600 md:text-sm">
           <Link href={`/products/${productId}`}>{name}</Link>
         </h3>
-        <span className="text-zinc-700 text-lg">{price}</span>
+        <span className="text-lg text-zinc-700">{price}</span>
       </div>
     </div>
   );

@@ -19,14 +19,8 @@ function Navbar() {
       {/* <Announcement /> */}
       <div className="container mx-auto flex justify-between gap-3 px-3 py-4">
         <Link className="flex items-center gap-2 text-base font-bold" href="/">
-          <Image
-            src="/cybertech.svg"
-            height={28}
-            width={28}
-            alt="CyberTech Logo"
-          />{" "}
           <div>
-            cyber.<span className="text-blue-600">tech</span>
+            cyber_<span className="text-blue-600">tech.</span>
           </div>
         </Link>
 

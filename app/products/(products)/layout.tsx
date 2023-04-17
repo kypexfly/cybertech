@@ -15,10 +15,13 @@ export default async function ProductsLayout({
 }) {
   return (
     <FilterContextProvider>
-      <div className="flex flex-col gap-6 px-3 py-8 md:flex-row">
-        <aside className="w-full shrink-0 md:w-60">
-          <Heading className="mb-6 font-normal" as="h3">
-            Options
+      <div className="flex flex-col gap-6 px-3 py-8 lg:flex-row">
+        <aside className="w-full shrink-0 lg:w-60">
+          <Heading
+            className="my-6 scroll-m-20 text-2xl font-semibold tracking-tight"
+            as="h3"
+          >
+            Filters
           </Heading>
           <div className="mb-6 md:hidden">
             <SearchProductBar />

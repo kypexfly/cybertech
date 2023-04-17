@@ -3,7 +3,7 @@ import Heading from "@/components/Heading";
 export default function Loading() {
   return (
     <>
-      <Heading className="my-3" as="h3">
+      <Heading className="my-6" as="h3">
         <div className="h-8 w-1/4 animate-pulse rounded bg-slate-200"></div>
       </Heading>
 

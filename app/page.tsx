@@ -76,11 +76,18 @@ export default async function Home() {
           <Heading size="text-4xl" className="md:text-5xl" as="h3">
             Latest Products
           </Heading>
+          <p className="mx-auto mt-4 max-w-lg text-sm/relaxed text-gray-500 dark:text-gray-400">
+            Stay up-to-date with the newest and most innovative tech items on
+            the market. From smartphones to laptops, smart home devices to
+            wearables, we have all the latest and greatest tech products for you
+            to explore.
+          </p>
         </header>
         <Carousel
           additionalTransfrom={0}
           arrows
           ssr={true}
+          deviceType="desktop"
           autoPlay
           autoPlaySpeed={5000}
           centerMode={false}
@@ -114,7 +121,7 @@ export default async function Home() {
             <Link
               href={`/products?category=${category.name.toLowerCase()}`}
               key={category.name}
-              className="flex items-center gap-2 bg-zinc-100 px-6 py-3 hover:bg-blue-600 hover:text-white md:flex-col md:justify-center md:py-6"
+              className="flex items-center gap-2 bg-slate-100 px-6 py-3 hover:bg-blue-600 hover:text-white md:flex-col md:justify-center md:py-6"
             >
               <category.icon size={32} />
               <span>{category.name}</span>

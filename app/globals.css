@@ -5,37 +5,39 @@
 /* #react-multiple-carousel */
 
 .react-multiple-carousel__arrow {
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  z-index: 1;
+  background-color: white !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+  z-index: 1 !important;
 }
 
 .react-multiple-carousel__arrow:hover {
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  background-color: white !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
 }
 
 .react-multiple-carousel__arrow::before {
-  color: black;
-  z-index: 1;
+  color: black !important;
+  z-index: 1 !important;
 }
 
 .react-multiple-carousel__arrow--left {
-  left: 2%
+  left: 2% !important;
 }
 
 .react-multiple-carousel__arrow--right {
-  right: 2%
+  right: 2% !important;
 }
 
 .react-multi-carousel-dot-list {
-  position: relative;
+  position: relative !important;
 }
 
 .react-multi-carousel-dot button {
-  @apply bg-blue-600 border-white
+  background-color: rgb(37 99 235) !important;
+  border-color: white !important;
 }
 
 .react-multi-carousel-dot--active button {
-  @apply bg-blue-600 border-blue-600
+  background-color: white !important;
+  border-color: rgb(37 99 235) !important;
 }

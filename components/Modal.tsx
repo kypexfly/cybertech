@@ -15,6 +15,7 @@ import useSWR from "swr";
 import { ShoppingBag, X } from "tabler-icons-react";
 import Heading from "./Heading";
 import Loader from "./Loader";
+import { Button } from "./ui/button";
 
 export default function Modal() {
   const cart = useCart((state) => state.cart);
@@ -41,7 +42,7 @@ export default function Modal() {
           },
         }}
         onClick={setOpenModal}
-        className="absolute inset-0 cursor-pointer bg-slate-900/75"
+        className="absolute inset-0 cursor-pointer bg-slate-900/40"
       ></motion.div>
       <motion.aside
         initial={{ x: "100%" }}
@@ -54,7 +55,7 @@ export default function Modal() {
         transition={{ type: "spring", bounce: 0, duration: 0.4 }}
         className="fixed right-0 top-0 flex h-screen w-full flex-col overflow-y-auto bg-white sm:w-96"
       >
-        <div className="flex items-center justify-between px-3 border-b border-zinc-100">
+        <div className="flex items-center justify-between border-b border-zinc-100 px-3">
           <Heading as="h3" size="text-base" className="my-5">
             Shopping Cart
           </Heading>
@@ -138,7 +139,7 @@ function WithCartItems() {
       products?.filter((product) => product.id !== productId),
       { revalidate: false }
     );
-    toast.error(`${truncateSentence(productName, 16)} removed`);
+    toast.error(`${truncateSentence(productName)} removed`);
   };
 
   return (
@@ -156,7 +157,7 @@ function WithCartItems() {
               className="flex items-center gap-3 border-b border-slate-200 px-3 py-6 last:border-b-0"
             >
               <div className="relative h-20 basis-20 overflow-hidden ">
-                <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
+                <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#6185cc0d]"></div>
                 <Image
                   src={product.images[0]}
                   alt={product.name}
@@ -177,12 +178,13 @@ function WithCartItems() {
                   {cart.find((item) => item.productId === product.id)?.quantity}
                 </div>
               </div>
-              <button
+              <Button
                 onClick={() => handleRemoveItem(product.id, product.name)}
-                className="cursor-pointer bg-rose-500 p-1 text-white"
+                size="sm"
+                className="aspect-square h-5 rounded-full bg-rose-500 p-1 text-white"
               >
-                <X size={12} strokeWidth={2} />
-              </button>
+                <X size={16} strokeWidth={3} />
+              </Button>
             </div>
           ))}
       </div>
@@ -211,13 +213,13 @@ function WithoutCartItems() {
   return (
     <>
       <div className="flex flex-col items-center">
+        <ShoppingBag size={180} strokeWidth={1} className="mt-6" />
         <p className="px-3 py-6 text-center text-lg">
           Your shopping cart is empty
         </p>
-        <ShoppingBag size={180} />
       </div>
       <div className="mb-6 mt-auto flex flex-col px-3 py-6">
-        <button
+        <Button
           type="button"
           onClick={() => {
             router.push("/products");
@@ -226,7 +228,7 @@ function WithoutCartItems() {
           className="cursor-pointer bg-black p-3 text-white"
         >
           Let&apos;s shopping
-        </button>
+        </Button>
       </div>
     </>
   );

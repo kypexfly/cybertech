@@ -2,7 +2,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Toaster from "@/components/external/Toaster";
 import { Inter } from "next/font/google";
-import "react-multi-carousel/lib/styles.css";
 import "./globals.css";
 import { Metadata } from "next";
 

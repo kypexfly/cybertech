@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -81,15 +82,15 @@ export default function OptionSelector() {
         />
       </div>
       <div className="mt-6 flex gap-3">
-        <button
+        <Button
           onClick={() => {
             resetFilter();
             setReset(+new Date());
           }}
-          className="flex-1 rounded  bg-rose-600 px-2 py-3 text-sm font-bold text-white"
+          className="flex-1"
         >
           Reset
-        </button>
+        </Button>
       </div>
       {/* <pre>{JSON.stringify(filter, null, 2)}</pre> */}
     </>

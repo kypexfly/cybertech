@@ -53,7 +53,7 @@ export default async function ProductPage({ params }: Props) {
     <div className="flex min-h-[70vh] flex-col gap-4 px-3 py-6 md:flex-row">
       <div className="w-full flex-1 lg:px-16">
         <div className="relative h-96 w-full overflow-hidden md:h-[36rem]">
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#5151510d]"></div>
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full bg-[#6185cc0d]"></div>
           <Image
             src={images[0]}
             alt={name}

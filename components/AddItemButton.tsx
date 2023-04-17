@@ -5,6 +5,7 @@ import { ShoppingCart } from "tabler-icons-react";
 import toast from "react-hot-toast";
 import truncateSentence from "@/utils/truncateSentence";
 import cn from "@/utils/cn";
+import { Button } from "./ui/button";
 
 interface AddItemButtonProps {
   cartItem: CartItem;
@@ -21,19 +22,20 @@ export default function AddItemButton({
 
   const handleAddItem = () => {
     addCartItem(cartItem);
-    toast.success(`${truncateSentence(productName, 16)} added to cart`);
+    toast.success(`${truncateSentence(productName)} added to cart`);
   };
 
   return (
-    <button
+    <Button
       type="button"
       onClick={handleAddItem}
+      size="lg"
       className={cn(
-        "mb-2 mr-2 bg-rose-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-rose-700",
+        "rounded-none bg-rose-600 font-medium text-white",
         className
       )}
     >
-      <ShoppingCart className="mr-2 inline-block" /> Add to cart
-    </button>
+      <ShoppingCart className="mr-2" /> Add to cart
+    </Button>
   );
 }

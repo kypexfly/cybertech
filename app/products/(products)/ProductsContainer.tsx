@@ -18,7 +18,7 @@ export default function ProductsContainer({
 
   return (
     <>
-      <Heading className="my-3 font-normal" as="h3">
+      <Heading className="my-6 scroll-m-20 text-2xl font-semibold tracking-tight" as="h3">
         {!search ? "All products" : `Search for "${search}"`} (
         {filteredProducts.length} results)
       </Heading>

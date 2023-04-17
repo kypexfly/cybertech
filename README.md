@@ -1,5 +1,6 @@
 ## TODO List
 * Add landing page
+* Add debounce for price range filter
 * Add pagination in products page
 * Add breadcrums
 * When adding to cart, open dialog asking the quantity
