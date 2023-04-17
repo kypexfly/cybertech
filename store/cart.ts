@@ -8,16 +8,12 @@ export interface CartItem {
 
 interface CartStore {
     cart: CartItem[],
-    openModal: boolean,
-    setOpenModal: () => void
     addCartItem: (item : CartItem) => void
     removeCartItem: (id : string) => void
 }
 
 const useCart = create<CartStore>((set, get) => ({
     cart: [],
-    openModal: false,
-    setOpenModal: () => set((state) => ({...state, openModal: !state.openModal})),
     addCartItem: (item) => set((state) => {
         const existItem = state.cart.find(cartItem => cartItem.productId === item.productId)
         if (existItem) {
