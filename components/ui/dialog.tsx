@@ -29,7 +29,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DialogPrimitive.Overlay
     className={cn(
-      "data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-all duration-100",
+      "data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out fixed inset-0 z-50 bg-slate-900/40 transition-all duration-100",
       className
     )}
     {...props}
@@ -76,6 +76,16 @@ const DialogHeader = ({
   />
 );
 DialogHeader.displayName = "DialogHeader";
+
+const DialogClose = ({
+  className,
+  children,
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <DialogPrimitive.Close className={cn(className)}>
+    {children}
+  </DialogPrimitive.Close>
+);
+DialogClose.displayName = "DialogClose";
 
 const DialogFooter = ({
   className,
@@ -127,4 +137,5 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  DialogClose,
 };

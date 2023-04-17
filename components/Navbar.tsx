@@ -16,7 +16,6 @@ import WishlistButton from "./WishlistButton";
 function Navbar() {
   return (
     <header className="sticky top-0 z-20 border-b border-zinc-100 bg-white">
-      {/* <Announcement /> */}
       <div className="container mx-auto flex justify-between gap-3 px-3 py-4">
         <Link className="flex items-center gap-2 text-base font-bold" href="/">
           <div>
