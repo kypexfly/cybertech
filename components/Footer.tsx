@@ -43,7 +43,7 @@ export default function Footer() {
       <div className="container mx-auto flex justify-between border-t border-zinc-100 px-6 py-10 text-sm text-zinc-700">
         <span>Copyright © 2023 CyberTech</span>
         <a
-          href="https://github.com/kypexfly/cybertech"
+          href="https://github.com/kypexfly/cybertech-ecommerce"
           className="flex items-center hover:scale-110"
         >
           <BrandGithub />
