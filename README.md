@@ -1,5 +1,6 @@
 ## TODO List
 * Add landing page
+* Change dynamic route from id to slug
 * Add debounce for price range filter
 * Add pagination in products page
 * Add breadcrums

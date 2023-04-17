@@ -16,11 +16,16 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;
-  const { name } = await getStripeSingleProduct(id);
-
-  return {
-    title: `${name} - CyberTech`,
-  };
+  try {
+    const { name } = await getStripeSingleProduct(id);
+    return {
+      title: `${name} - CyberTech`,
+    };
+  } catch (e) {
+    return {
+      title: "Error - CyberTech",
+    };
+  }
 }
 
 async function getStripeSingleProduct(id: string) {
