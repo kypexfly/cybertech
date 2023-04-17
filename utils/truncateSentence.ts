@@ -1,7 +1,8 @@
 export default function truncateSentence(
   sentence: string,
-  maxLength: number
+  maxLength?: number
 ): string {
+  maxLength = maxLength || 20;
   if (sentence.length <= maxLength) {
     return sentence;
   } else {
