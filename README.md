@@ -1,4 +1,56 @@
-## TODO List
+# CyberTech eCommerce
+💫 Stay up-to-date with the newest and most innovative tech items on the market
+
+<center>
+
+![Next.js](https://img.shields.io/badge/next.js-404D59.svg?style=for-the-badge&logo=next.js&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-404D59.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-404D59.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Stripe](https://img.shields.io/badge/stripe-404D59?style=for-the-badge&logo=netlify&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-404D59?style=for-the-badge&logo=vercel&logoColor=white)
+
+</center>
+
+![Screenshot](./public/app_screenshot.jpg)
+
+## 📋 Description 
+
+CyberTech eCommerce is build with Next 13, TailwindCSS and Stripe.
+
+* Sort and filter products by name, price and price range
+* Checkout products from your cart
+* Shopping cart synchronized with Stripe API
+* All products are managed in Stripe
+* Responsive design
+
+## 🔩 Tools
+* React.js / Next.js
+* Radix UI + shadcn/ui
+* TailwindCSS
+* Stripe
+* SWR
+* ESLint
+
+## ✨ Test
+
+* [Live demo](https://cybertech-blond.vercel.app)
+
+### Run app locally
+```
+git clone https://github.com/kypexfly/cybertech.git
+cd cybertech
+npm install
+```
+Add `.env` file to the root directory, following the `.env.example` file.
+```
+STRIPE_SECRET="your stripe secret"
+```
+Start the app
+```
+npm dev
+```
+
+## 🧪 Possible improvements / To Do
 * Add landing page
 * Change dynamic route from id to slug
 * Add debounce for price range filter
@@ -6,7 +58,7 @@
 * Add breadcrums
 * When adding to cart, open dialog asking the quantity
     
-## Completed Tasks
+##  🪄 Completed To Do
 * Add skeletons
 * Sort and filter elements
 * Carousel (Latest products)
@@ -16,41 +68,3 @@
 * Cart items counter should include quantity as well
 * Add Github Workflow + Vercel deploy
 * Transitions when opening  modal
----
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
