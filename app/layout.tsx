@@ -30,7 +30,6 @@ export default function RootLayout({
       <body className={`flex min-h-screen flex-col ${inter.className}`}>
         <Navbar />
         <main className="container mx-auto w-full grow">{children}</main>
-        <div id="modal"></div>
         <Toaster position="bottom-center" />
         <Footer />
       </body>
