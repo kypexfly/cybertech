@@ -24,7 +24,7 @@ CyberTech eCommerce is build with Next 13, TailwindCSS and Stripe.
 * Responsive design
 
 ## 🔩 Tools
-* React.js / Next.js
+* React.js & Next.js
 * Radix UI + shadcn/ui
 * TailwindCSS
 * Stripe
@@ -33,12 +33,12 @@ CyberTech eCommerce is build with Next 13, TailwindCSS and Stripe.
 
 ## ✨ Test
 
-* [Live demo](https://cybertech-blond.vercel.app)
+* [Live demo](https://cybertech-ecommerce.vercel.app)
 
 ### Run app locally
 ```
-git clone https://github.com/kypexfly/cybertech.git
-cd cybertech
+git clone https://github.com/kypexfly/cybertech-ecommerce.git
+cd cybertech-ecommerce
 npm install
 ```
 Add `.env` file to the root directory, following the `.env.example` file.
@@ -51,12 +51,13 @@ npm dev
 ```
 
 ## 🧪 Possible improvements / To Do
-* Add landing page
-* Change dynamic route from id to slug
+* Save cart in local storage
 * Add debounce for price range filter
 * Add pagination in products page
-* Add breadcrums
+* Change dynamic route from id to slug
 * When adding to cart, open dialog asking the quantity
+* Add breadcrumbs
+* Add landing page
     
 ##  🪄 Completed To Do
 * Add skeletons
